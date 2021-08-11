@@ -59,7 +59,17 @@ class HangMan():
 
 
 def main():
-    word = "pineapple"
+    from random import choice
+
+    DICTIONARY_FILE_NAME = "words.txt"
+
+    # Open file, ignore commented lines, and remove trailing '\n'
+    with open(DICTIONARY_FILE_NAME, "r") as filein:
+        word_list = [word.rstrip("\n") for word in filein.readlines()
+                     if not word.startswith('#')]
+
+    # choose a word at random using random module, and play the game.
+    word = choice(word_list)
     HangMan(word).play()
 
 if __name__ == "__main__":
