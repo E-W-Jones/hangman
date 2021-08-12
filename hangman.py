@@ -47,12 +47,13 @@ class HangMan():
             self.print_state()
 
             won = (str(self) == self.word)
-            lost = (len(self.incorrect_guesses) == len(images))
+            lost = (len(self.incorrect_guesses) >= len(images) - 2)
 
         if won:
             print("\n\n\n\nWell done!")
             print(f"You correctly guessed the word was {self.word}\n\n")
         else:
+            print(images[-1])
             print(f"\n\n\n\nUnlucky bud, you lost.\nThe word was {self.word}")
 
         print("Game Finished")
